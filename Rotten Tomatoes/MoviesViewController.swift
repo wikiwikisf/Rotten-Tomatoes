@@ -28,18 +28,27 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let sess = NSURLSession.sharedSession()
         let dataTask = sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
-                do {
-                    let dictionary = try NSJSONSerialization.JSONObjectWithData(data!,
-                        options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
-                    if let dictionary = dictionary {
-                        SwiftLoader.hide()
-                        self.movies = dictionary["movies"] as? [NSDictionary]
-                        self.tableView.reloadData()
+                if let error = error {
+                    if (error.domain == "NSURLErrorDomain") {
+                        // TODO: show Network Error
+                        print("network error")
                     }
-                    //print(dictionary)
-                } catch let error as NSError {
-                    // TODO : if network error show error message (see network error screenshot in hw)
-                    print("error parsing json" + error.description)
+                    SwiftLoader.hide()
+                    return
+                }
+                else {
+                    do {
+                        let dictionary = try NSJSONSerialization.JSONObjectWithData(data!,
+                            options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+                        if let dictionary = dictionary {
+                            SwiftLoader.hide()
+                            self.movies = dictionary["movies"] as? [NSDictionary]
+                            self.tableView.reloadData()
+                        }
+                        //print(dictionary)
+                    } catch let error as NSError {
+                        print("error parsing json" + error.description)
+                    }
                 }
             }
         })
@@ -54,7 +63,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     override func viewDidAppear(animated: Bool) {
-        tableView.rowHeight = 135
+        tableView.rowHeight = 130
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,7 +103,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = movie["title"] as? String
         cell.synopsisLabel.text = movie["synopsis"] as? String
         
-        let url = NSURL(string: movie.valueForKeyPath("posters.thumbnail") as! String)!
+        var urlString =  movie.valueForKeyPath("posters.thumbnail") as! String
+        // Convert to high-res image
+        let range = urlString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+        if let range = range {
+            urlString = urlString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
+        }
+        let url = NSURL(string: urlString)!
+        
         cell.posterView.setImageWithURL(url)
     
         return cell
