@@ -5,6 +5,7 @@ use_frameworks!
 target 'Rotten Tomatoes' do
 
 pod 'AFNetworking'
+pod 'SwiftLoader'
 
 end
 
