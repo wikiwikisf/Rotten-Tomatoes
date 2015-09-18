@@ -48,7 +48,7 @@
                                             <outlet property="posterView" destination="Q6o-Sf-Hpx" id="hnj-0O-Lbe"/>
                                             <outlet property="synopsisLabel" destination="D9G-EN-V61" id="Gwd-yI-GhF"/>
                                             <outlet property="titleLabel" destination="in6-tw-LCI" id="GsY-bv-Ypg"/>
-                                            <segue destination="yjW-3K-e0q" kind="push" id="qNV-Zd-ZEG"/>
+                                            <segue destination="yjW-3K-e0q" kind="push" identifier="movieSeque" id="qNV-Zd-ZEG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
