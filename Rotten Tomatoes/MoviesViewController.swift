@@ -20,13 +20,31 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Renders spinner until movies are fetched
         SwiftLoader.show(animated: true)
+ 
+        requestMovies()
+        addRefreshControl()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
 
+    override func viewDidAppear(animated: Bool) {
+        tableView.rowHeight = 130
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func requestMovies() {
         let cachedDataUrlString = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
         let request = NSURLRequest(URL: cachedDataUrlString);
-    
+        
         let sess = NSURLSession.sharedSession()
-        let dataTask = sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
                 if let error = error {
                     if (error.domain == "NSURLErrorDomain") {
@@ -51,24 +69,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     }
                 }
             }
-        })
-        dataTask.resume()
- 
+        }).resume()
+    }
+    
+    func addRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        tableView.rowHeight = 130
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func delay(delay:Double, closure:()->()) {
@@ -82,6 +89,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func onRefresh() {
         delay(2, closure: {
+            // Refresh and make another request for movies
+            self.requestMovies()
             self.refreshControl.endRefreshing()
         })
     }
