@@ -23,16 +23,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
         let sess = NSURLSession.sharedSession()
         let dataTask = sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            do {
-                let dictionary = try NSJSONSerialization.JSONObjectWithData(data!,
-                    options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
-                if let dictionary = dictionary {
-                    self.movies = dictionary["movies"] as? [NSDictionary]
-                    self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()) {
+                do {
+                    let dictionary = try NSJSONSerialization.JSONObjectWithData(data!,
+                        options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+                    if let dictionary = dictionary {
+                        self.movies = dictionary["movies"] as? [NSDictionary]
+                        self.tableView.reloadData()
+                    }
+                    //print(dictionary)
+                } catch let error as NSError {
+                    // TODO : if network error show error message (see network error screenshot in hw)
+                    print("error parsing json" + error.description)
                 }
-                print(dictionary)
-            } catch let error as NSError{
-                print("error parsing json" + error.description)
             }
         })
         dataTask.resume()
@@ -41,6 +44,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
     }
 
+    override func viewDidAppear(animated: Bool) {
+        tableView.rowHeight = 135
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,15 +76,18 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
 
-
-    /*
-    // MARK: - Navigation
-
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let cell = sender as! MovieCell
+        let indexPath = tableView.indexPathForCell(cell)!
+        let movie = movies![indexPath.row]
+        
+        let movieDetailsViewController = segue.destinationViewController as! MovieDetailsViewController
+        movieDetailsViewController.movie = movie
     }
-    */
 
 }

@@ -14,6 +14,7 @@
 		F106B2731BA92F5C0008D783 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F106B2711BA92F5C0008D783 /* LaunchScreen.storyboard */; };
 		F106B27B1BA92FAC0008D783 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106B27A1BA92FAC0008D783 /* MoviesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F1FA4F241BABD16700476E2B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FA4F231BABD16700476E2B /* MovieCell.swift */; settings = {ASSET_TAGS = (); }; };
+		F1FA4F261BABE42200476E2B /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FA4F251BABE42200476E2B /* MovieDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F106B2741BA92F5C0008D783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F106B27A1BA92FAC0008D783 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoviesViewController.swift; path = ../MoviesViewController.swift; sourceTree = "<group>"; };
 		F1FA4F231BABD16700476E2B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		F1FA4F251BABE42200476E2B /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				F106B27A1BA92FAC0008D783 /* MoviesViewController.swift */,
+				F1FA4F251BABE42200476E2B /* MovieDetailsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1FA4F261BABE42200476E2B /* MovieDetailsViewController.swift in Sources */,
 				F106B2691BA92F5C0008D783 /* AppDelegate.swift in Sources */,
 				F106B27B1BA92FAC0008D783 /* MoviesViewController.swift in Sources */,
 				F1FA4F241BABD16700476E2B /* MovieCell.swift in Sources */,
