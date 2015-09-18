@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC043CDA7FA8713B6242CBB2 /* Pods_Rotten_Tomatoes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D10141ECFD9C4A217F4D9E5C /* Pods_Rotten_Tomatoes.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F106B2691BA92F5C0008D783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106B2681BA92F5C0008D783 /* AppDelegate.swift */; };
-		F106B26B1BA92F5C0008D783 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106B26A1BA92F5C0008D783 /* ViewController.swift */; };
 		F106B26E1BA92F5C0008D783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F106B26C1BA92F5C0008D783 /* Main.storyboard */; };
 		F106B2701BA92F5C0008D783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F106B26F1BA92F5C0008D783 /* Assets.xcassets */; };
 		F106B2731BA92F5C0008D783 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F106B2711BA92F5C0008D783 /* LaunchScreen.storyboard */; };
+		F106B27B1BA92FAC0008D783 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106B27A1BA92FAC0008D783 /* MoviesViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F1FA4F241BABD16700476E2B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FA4F231BABD16700476E2B /* MovieCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7092B745D47E91C2F242FBC1 /* Pods-Rotten Tomatoes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rotten Tomatoes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rotten Tomatoes/Pods-Rotten Tomatoes.release.xcconfig"; sourceTree = "<group>"; };
+		AA4FCF49C9E39E757264D235 /* Pods-Rotten Tomatoes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rotten Tomatoes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rotten Tomatoes/Pods-Rotten Tomatoes.debug.xcconfig"; sourceTree = "<group>"; };
+		D10141ECFD9C4A217F4D9E5C /* Pods_Rotten_Tomatoes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rotten_Tomatoes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F106B2651BA92F5C0008D783 /* Rotten Tomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rotten Tomatoes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F106B2681BA92F5C0008D783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F106B26A1BA92F5C0008D783 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F106B26D1BA92F5C0008D783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F106B26F1BA92F5C0008D783 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F106B2721BA92F5C0008D783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F106B2741BA92F5C0008D783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F106B27A1BA92FAC0008D783 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoviesViewController.swift; path = ../MoviesViewController.swift; sourceTree = "<group>"; };
+		F1FA4F231BABD16700476E2B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC043CDA7FA8713B6242CBB2 /* Pods_Rotten_Tomatoes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B6B54455EA203AA6C88BB4D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FCF49C9E39E757264D235 /* Pods-Rotten Tomatoes.debug.xcconfig */,
+				7092B745D47E91C2F242FBC1 /* Pods-Rotten Tomatoes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B88A4C4E2BA2AC66A78FD9AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D10141ECFD9C4A217F4D9E5C /* Pods_Rotten_Tomatoes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F106B25C1BA92F5B0008D783 = {
 			isa = PBXGroup;
 			children = (
 				F106B2671BA92F5C0008D783 /* Rotten Tomatoes */,
 				F106B2661BA92F5C0008D783 /* Products */,
+				7B6B54455EA203AA6C88BB4D /* Pods */,
+				B88A4C4E2BA2AC66A78FD9AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +80,31 @@
 		F106B2671BA92F5C0008D783 /* Rotten Tomatoes */ = {
 			isa = PBXGroup;
 			children = (
+				F1FA4F221BABD03900476E2B /* Views */,
+				F106B27C1BA92FC40008D783 /* ViewControllers */,
 				F106B2681BA92F5C0008D783 /* AppDelegate.swift */,
-				F106B26A1BA92F5C0008D783 /* ViewController.swift */,
 				F106B26C1BA92F5C0008D783 /* Main.storyboard */,
 				F106B26F1BA92F5C0008D783 /* Assets.xcassets */,
 				F106B2711BA92F5C0008D783 /* LaunchScreen.storyboard */,
 				F106B2741BA92F5C0008D783 /* Info.plist */,
 			);
 			path = "Rotten Tomatoes";
+			sourceTree = "<group>";
+		};
+		F106B27C1BA92FC40008D783 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F106B27A1BA92FAC0008D783 /* MoviesViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F1FA4F221BABD03900476E2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1FA4F231BABD16700476E2B /* MovieCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F106B2771BA92F5C0008D783 /* Build configuration list for PBXNativeTarget "Rotten Tomatoes" */;
 			buildPhases = (
+				7BC94E01B8A1EADBF3B31FC9 /* Check Pods Manifest.lock */,
 				F106B2611BA92F5B0008D783 /* Sources */,
 				F106B2621BA92F5B0008D783 /* Frameworks */,
 				F106B2631BA92F5B0008D783 /* Resources */,
+				46AC209065028C6768EB2FDF /* Embed Pods Frameworks */,
+				EDE4A5CC325B7F9A6176401B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,13 +176,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		46AC209065028C6768EB2FDF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rotten Tomatoes/Pods-Rotten Tomatoes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BC94E01B8A1EADBF3B31FC9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EDE4A5CC325B7F9A6176401B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rotten Tomatoes/Pods-Rotten Tomatoes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F106B2611BA92F5B0008D783 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F106B26B1BA92F5C0008D783 /* ViewController.swift in Sources */,
 				F106B2691BA92F5C0008D783 /* AppDelegate.swift in Sources */,
+				F106B27B1BA92FAC0008D783 /* MoviesViewController.swift in Sources */,
+				F1FA4F241BABD16700476E2B /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +342,7 @@
 		};
 		F106B2781BA92F5C0008D783 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA4FCF49C9E39E757264D235 /* Pods-Rotten Tomatoes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Rotten Tomatoes/Info.plist";
@@ -258,6 +354,7 @@
 		};
 		F106B2791BA92F5C0008D783 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7092B745D47E91C2F242FBC1 /* Pods-Rotten Tomatoes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Rotten Tomatoes/Info.plist";
@@ -286,6 +383,7 @@
 				F106B2791BA92F5C0008D783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
