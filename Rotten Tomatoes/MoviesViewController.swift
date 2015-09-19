@@ -13,6 +13,7 @@ import SwiftLoader
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var networkErrorView: UIView!
     
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
@@ -42,19 +43,20 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func requestMovies() {
         let cachedDataUrlString = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
         let request = NSURLRequest(URL: cachedDataUrlString);
-        
         let sess = NSURLSession.sharedSession()
+        
         sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
                 if let error = error {
                     if (error.domain == "NSURLErrorDomain") {
-                        // TODO: show Network Error
                         print("network error")
+                        self.networkErrorView.hidden = false
                     }
                     SwiftLoader.hide()
                     return
                 }
                 else {
+                    self.networkErrorView.hidden = true
                     do {
                         let dictionary = try NSJSONSerialization.JSONObjectWithData(data!,
                             options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
