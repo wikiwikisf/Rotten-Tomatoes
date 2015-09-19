@@ -23,15 +23,7 @@ class MovieDetailsViewController: UIViewController {
         titleLabel.text = movie["title"] as? String
         synopsisLabel.text = movie["synopsis"] as? String
         
-        var urlString =  movie.valueForKeyPath("posters.thumbnail") as! String
-        // Convert to high-res image
-        let range = urlString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
-        if let range = range {
-            urlString = urlString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
-        }
-        let url = NSURL(string: urlString)!
-        
-        posterImageView.setImageWithURL(url)
+        fadeInImage()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +31,22 @@ class MovieDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func fadeInImage() {
+        let lowResString =  movie.valueForKeyPath("posters.thumbnail") as! String
+        var highResString = lowResString
+        
+        // Convert to high-res image
+        let range = lowResString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+        if let range = range {
+            highResString = lowResString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
+        }
+        
+        let lowResUrl = NSURL(string: lowResString)!
+        let lowResData = NSData(contentsOfURL: lowResUrl)!
+        let highResUrl = NSURL(string: highResString)!
+        // Fade in high-res image, show low-res image initially
+        posterImageView.setImageWithURLRequest(NSURLRequest(URL: highResUrl), placeholderImage: UIImage(data: lowResData), success:nil, failure: nil)
+    }
 
     /*
     // MARK: - Navigation

@@ -30,11 +30,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.dataSource = self
         tableView.delegate = self
-    }
-
-    override func viewDidAppear(animated: Bool) {
         tableView.rowHeight = 138
-        networkImageView.image = UIImage(named: "makefg.php")        
+        networkImageView.image = UIImage(named: "makefg.php")
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +44,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let request = NSURLRequest(URL: cachedDataUrlString);
         let sess = NSURLSession.sharedSession()
         
-        sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+        sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?,
+            error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
                 if let error = error {
                     if (error.domain == "NSURLErrorDomain") {
@@ -116,19 +114,24 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = movie["title"] as? String
         cell.synopsisLabel.text = movie["synopsis"] as? String
         
-        var urlString =  movie.valueForKeyPath("posters.thumbnail") as! String
-        // Convert to high-res image
-        let range = urlString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+        let lowResString =  movie.valueForKeyPath("posters.thumbnail") as! String
+        var highResString = lowResString
+        let range = lowResString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
         if let range = range {
-            urlString = urlString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
+            highResString =
+                lowResString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
         }
-        let url = NSURL(string: urlString)!
+        let lowResUrl = NSURL(string: lowResString)!
+        let lowResData = NSData(contentsOfURL: lowResUrl)!
+        let highResUrl = NSURL(string: highResString)!
         
-        cell.posterView.setImageWithURL(url)
-    
+        // Fade in high-res images, show low-res images initially
+        cell.posterView.setImageWithURLRequest(NSURLRequest(URL: highResUrl), placeholderImage: UIImage(data: lowResData),
+            success:nil, failure: nil)
+        
         return cell
     }
-
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
