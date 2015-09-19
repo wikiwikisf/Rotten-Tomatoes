@@ -21,12 +21,20 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="HO3-pc-y9z">
-                                            <rect key="frame" x="95" y="4" width="130" height="25"/>
+                                            <rect key="frame" x="100" y="4" width="130" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BFK-iy-ep9">
+                                            <rect key="frame" x="163" y="32" width="30" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bJ8-UM-Rck">
+                                            <rect key="frame" x="94" y="7" width="17" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
@@ -73,6 +81,7 @@
                     <navigationItem key="navigationItem" title="Movies" id="Aje-dr-Tz7"/>
                     <connections>
                         <outlet property="networkErrorView" destination="XU5-sL-IIf" id="u2h-be-8EJ"/>
+                        <outlet property="networkImageView" destination="bJ8-UM-Rck" id="efA-7X-uqI"/>
                         <outlet property="tableView" destination="GuR-ER-oPn" id="F6d-Hp-dNF"/>
                     </connections>
                 </viewController>

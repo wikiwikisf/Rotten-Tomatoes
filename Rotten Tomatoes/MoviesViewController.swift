@@ -14,6 +14,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkErrorView: UIView!
+    @IBOutlet weak var networkImageView: UIImageView!
     
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
@@ -32,7 +33,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     override func viewDidAppear(animated: Bool) {
-        tableView.rowHeight = 130
+        tableView.rowHeight = 138
+        networkImageView.image = UIImage(named: "makefg.php")        
     }
     
     override func didReceiveMemoryWarning() {
