@@ -17,8 +17,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var networkImageView: UIImageView!
     
     var movies: [NSDictionary]?
+    var moviesJson = "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json"
+ 
     var refreshControl: UIRefreshControl!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,8 +41,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    func getSourceURL() -> NSURL {
+        return NSURL(string: moviesJson)!
+    }
+    
     func requestMovies() {
-        let cachedDataUrlString = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
+        let cachedDataUrlString = getSourceURL();
         let request = NSURLRequest(URL: cachedDataUrlString);
         let sess = NSURLSession.sharedSession()
         
