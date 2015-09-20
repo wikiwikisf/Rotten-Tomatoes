@@ -121,12 +121,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             highResString =
                 lowResString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
         }
+        
+        var placeholderImage: UIImage?
         let lowResUrl = NSURL(string: lowResString)!
-        let lowResData = NSData(contentsOfURL: lowResUrl)!
+        if let lowResData = NSData(contentsOfURL: lowResUrl) {
+            placeholderImage = UIImage(data: lowResData)
+        }
         let highResUrl = NSURL(string: highResString)!
         
         // Fade in high-res images, show low-res images initially
-        cell.posterView.setImageWithURLRequest(NSURLRequest(URL: highResUrl), placeholderImage: UIImage(data: lowResData),
+        // TODO: should failure here render a network error?
+        cell.posterView.setImageWithURLRequest(NSURLRequest(URL: highResUrl), placeholderImage: placeholderImage,
             success:nil, failure: nil)
         
         return cell

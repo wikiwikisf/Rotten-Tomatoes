@@ -40,12 +40,18 @@ class MovieDetailsViewController: UIViewController {
         if let range = range {
             highResString = lowResString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
         }
-        
+
+        var placeholderImage: UIImage?
         let lowResUrl = NSURL(string: lowResString)!
-        let lowResData = NSData(contentsOfURL: lowResUrl)!
+        if let lowResData = NSData(contentsOfURL: lowResUrl) {
+            placeholderImage = UIImage(data: lowResData)
+        }
         let highResUrl = NSURL(string: highResString)!
+        let highResURLRequest = NSURLRequest(URL: highResUrl,
+            cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 30)
         // Fade in high-res image, show low-res image initially
-        posterImageView.setImageWithURLRequest(NSURLRequest(URL: highResUrl), placeholderImage: UIImage(data: lowResData), success:nil, failure: nil)
+        posterImageView.setImageWithURLRequest(highResURLRequest, placeholderImage: placeholderImage,
+            success:nil, failure: nil)
     }
 
     /*
