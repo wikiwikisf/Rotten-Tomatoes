@@ -161,8 +161,10 @@
         <!--Tab Bar Controller-->
         <scene sceneID="FGG-ze-0NF">
             <objects>
-                <tabBarController id="XDu-fn-TkH" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="d1o-yb-Vzr">
+                <tabBarController wantsFullScreenLayout="YES" id="XDu-fn-TkH" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="d1o-yb-Vzr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
