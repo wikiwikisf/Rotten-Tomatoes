@@ -14,6 +14,16 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var posterView: UIImageView!
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initViews()
+    }
+    
+    func initViews() {
+        selectedBackgroundView = UIView(frame: frame)
+        selectedBackgroundView!.backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 0.9, alpha: 0.8)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
